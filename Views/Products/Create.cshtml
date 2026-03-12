@@ -1,0 +1,59 @@
+@model PruebaNet.Models.Product
+
+@{
+    ViewData["Title"] = "Nuevo Producto";
+}
+
+<div class="container mt-5 animate-in">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="text-center mb-4">
+                <h1 class="fw-bold text-gradient">Añadir Activo</h1>
+                <p class="text-secondary">Completa los detalles del nuevo producto</p>
+            </div>
+            
+            <div class="card shadow-lg p-2 border-0 overflow-hidden">
+                <div class="card-body p-4 p-md-5">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
+                        
+                        <div class="mb-4">
+                            <label asp-for="Name" class="form-label small fw-bold text-secondary text-uppercase tracking-wider">Nombre del Producto</label>
+                            <input asp-for="Name" class="form-control form-control-lg border-0 bg-light rounded-4 px-4" placeholder="Ej: Laptop Pro M3" />
+                            <span asp-validation-for="Name" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Description" class="form-label small fw-bold text-secondary text-uppercase tracking-wider">Descripción Detallada</label>
+                            <textarea asp-for="Description" class="form-control border-0 bg-light rounded-4 px-4 py-3" rows="3" placeholder="Describe las características principales..."></textarea>
+                            <span asp-validation-for="Description" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-5">
+                            <label asp-for="Price" class="form-label small fw-bold text-secondary text-uppercase tracking-wider">Precio de Venta</label>
+                            <div class="input-group">
+                                <span class="input-group-text border-0 bg-light rounded-start-4 ps-4">$</span>
+                                <input asp-for="Price" class="form-control form-control-lg border-0 bg-light rounded-end-4 pe-4" placeholder="0.00" />
+                            </div>
+                            <span asp-validation-for="Price" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-grid gap-3">
+                            <button type="submit" class="btn btn-primary btn-lg py-3 rounded-4">Crear Producto</button>
+                            <a asp-action="Index" class="btn btn-link text-secondary text-decoration-none">Volver al panel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .tracking-wider { letter-spacing: 0.1em; }
+    .form-control:focus {
+        background-color: #fff !important;
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1) !important;
+        border: 1px solid rgba(99, 102, 241, 0.4) !important;
+    }
+</style>

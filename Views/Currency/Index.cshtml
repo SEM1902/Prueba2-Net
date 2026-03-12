@@ -1,0 +1,89 @@
+@model PruebaNet.Services.ExchangeRateResponse
+
+@{
+    ViewData["Title"] = "Global Analytics";
+}
+
+<div class="container mt-5 animate-in">
+    <div class="text-center mb-5 mt-4">
+        <span class="badge bg-soft-primary px-3 py-2 rounded-pill text-primary mb-3">Live Data Integration</span>
+        <h1 class="display-3 fw-bold text-gradient">Forex Insights</h1>
+        <p class="lead text-secondary opacity-75">Visualiza el mercado global en tiempo real (Base: USD)</p>
+    </div>
+
+    @if (Model != null)
+    {
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="glass-table shadow-2xl p-4">
+                    <div class="table-responsive">
+                        <table class="table table-borderless align-middle mb-0">
+                            <thead>
+                                <tr class="text-secondary small text-uppercase tracking-wider border-bottom">
+                                    <th class="p-4">Moneda Global</th>
+                                    <th class="p-4">Índice de Mercado</th>
+                                    <th class="p-4 text-end pe-5">Valor vs USD</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var rate in Model.Rates)
+                                {
+                                    <tr class="hover-row">
+                                        <td class="p-4">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <div class="currency-icon">@rate.Key.Substring(0, 1)</div>
+                                                <span class="fw-bold h5 mb-0">@rate.Key</span>
+                                            </div>
+                                        </td>
+                                        <td class="p-4">
+                                            <div class="progress rounded-pill bg-light" style="height: 6px; width: 140px;">
+                                                <div class="progress-bar bg-primary" style="width: @(new Random().Next(40, 95))%"></div>
+                                            </div>
+                                        </td>
+                                        <td class="p-4 text-end pe-5">
+                                            <span class="h5 fw-800 text-gradient">@rate.Value.ToString("N4")</span>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="text-center mt-5 text-secondary small opacity-50">
+                    Sincronizado el @Model.Date • Frankfurter Financial Protocol v1.2
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="card p-5 text-center border-0 shadow-lg">
+            <div class="bg-light rounded-circle p-4 d-inline-block mx-auto mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#64748b" viewBox="0 0 16 16">
+                    <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                </svg>
+            </div>
+            <h3>Conexión interrumpida</h3>
+            <p>No logramos conectar con el proveedor de datos global.</p>
+        </div>
+    }
+</div>
+
+<style>
+    .bg-soft-primary { background-color: #eef2ff; }
+    .currency-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: lavender;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        color: #6366f1;
+    }
+    .hover-row { transition: background 0.2s; border-radius: 1rem; }
+    .hover-row:hover { background: rgba(99, 102, 241, 0.05); }
+    .fw-800 { font-weight: 800; }
+</style>

@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Tech Hub - Dashboard";
+}
+
+<div class="container-fluid p-0 animate-in">
+    <!-- Hero Section -->
+    <div class="hero-section py-5 mb-5 text-center text-white">
+        <div class="container py-5">
+            <span class="badge bg-white text-primary px-3 py-2 rounded-pill mb-3 fw-bold">Enterprise Solution v1.0</span>
+            <h1 class="display-2 fw-800 mb-3">Sistemas de Gestión <span class="text-glow">Inteligente</span></h1>
+            <p class="lead opacity-75 mb-5 mx-auto" style="max-width: 700px;">
+                La plataforma definitiva para el control de inventarios y análisis financiero global de alta precisión.
+            </p>
+            <div class="d-flex justify-content-center gap-3">
+                <a asp-controller="Products" asp-action="Index" class="btn btn-light btn-lg px-5 rounded-pill fw-bold shadow">Gestionar Inventario</a>
+                <a asp-controller="Currency" asp-action="Index" class="btn btn-outline-light btn-lg px-5 rounded-pill fw-bold">Mercados Globales</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="container pb-5">
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4">
+                <div class="card h-100 p-4 text-center border-0 shadow-sm glass">
+                    <div class="icon-circle bg-soft-primary mx-auto mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-cpu" viewBox="0 0 16 16">
+                            <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 .5-.5.5.5 0 0 1 .5.5V2h1.5a.5.5 0 0 1 .5.5V4h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-.5.5H12v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5V14H2.5a.5.5 0 0 1-.5-.5V12H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2V8H.5a.5.5 0 0 1 0-1H2V6H.5a.5.5 0 0 1 0-1H2V2.5a.5.5 0 0 1 .5-.5H4V.5A.5.5 0 0 1 5 0zm-.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="fw-bold">Alta Disponibilidad</h3>
+                    <p class="text-secondary opacity-75 small">Acceso instantáneo a tus datos maestros de productos a través de arquitectura optimizada.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 p-4 text-center border-0 shadow-sm glass">
+                    <div class="icon-circle bg-soft-success mx-auto mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-graph-up-arrow" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.109 2.109 3.09-3.775H10.5a.5.5 0 0 1-.5-.5Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="fw-bold">Insights en Vivo</h3>
+                    <p class="text-secondary opacity-75 small">Monitorea los tipos de cambio internacionales en tiempo real para decisiones estratégicas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .hero-section {
+        background: linear-gradient(rgba(99, 102, 241, 0.9), rgba(168, 85, 247, 0.9)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop');
+        background-size: cover;
+        background-position: center;
+        border-radius: 0 0 3rem 3rem;
+        box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25);
+    }
+    .text-glow { text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+    .icon-circle {
+        width: 64px;
+        height: 64px;
+        border-radius: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+    .bg-soft-primary { background: var(--primary); }
+    .bg-soft-success { background: #10b981; }
+    .fw-800 { font-weight: 800; }
+    .glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+</style>

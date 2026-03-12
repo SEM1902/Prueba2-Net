@@ -1,0 +1,63 @@
+@model IEnumerable<PruebaNet.Models.Product>
+
+@{
+    ViewData["Title"] = "Gestión de Productos";
+}
+
+<div class="container mt-5 animate-in">
+    <div class="d-flex justify-content-between align-items-center mb-5 pb-3 border-bottom border-light">
+        <div>
+            <h1 class="display-4 text-gradient mb-0">Product Intelligence</h1>
+            <p class="text-secondary">Gestiona tu catálogo con elegancia y precisión</p>
+        </div>
+        <a asp-action="Create" class="btn btn-primary d-flex align-items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg>
+            Nuevo Producto
+        </a>
+    </div>
+
+    <div class="row g-4">
+        @foreach (var (item, index) in Model.Select((v, i) => (v, i)))
+        {
+            <div class="col-md-4 animate-in" style="animation-delay: @(index * 0.1)s">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <span class="badge bg-soft-primary px-3 py-2 rounded-pill text-primary">ID: #@item.Id</span>
+                            <div class="dropdown">
+                                <button class="btn btn-link text-secondary p-0" data-bs-toggle="dropdown">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                                    </svg>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-4">
+                                    <li><a class="dropdown-item px-3 py-2" asp-action="Edit" asp-route-id="@item.Id">Editar</a></li>
+                                    <li><a class="dropdown-item px-3 py-2 text-danger" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <h4 class="fw-bold mb-2">@item.Name</h4>
+                        <p class="text-secondary small line-clamp-2">@item.Description</p>
+                        <hr class="opacity-10">
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="text-secondary small">Precio Actual</span>
+                            <span class="h4 fw-bold text-gradient mb-0">@item.Price.ToString("C")</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .bg-soft-primary { background-color: #eef2ff; }
+    .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-autofill: -webkit-box-orient;
+        overflow: hidden;
+    }
+</style>
