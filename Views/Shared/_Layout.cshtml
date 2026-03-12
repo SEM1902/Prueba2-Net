@@ -37,15 +37,17 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <div class="content-wrapper">
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - PruebaNet - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="footer-custom">
+        <div class="container text-center">
+            <span class="text-secondary">&copy; 2026 - <span class="fw-bold">PruebaNet</span> Premium Dashboard</span>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

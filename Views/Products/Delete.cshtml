@@ -1,0 +1,64 @@
+@model PruebaNet.Models.Product
+
+@{
+    ViewData["Title"] = "Eliminar Producto";
+}
+
+<div class="container mt-5 animate-in">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card border-0 shadow-lg glass p-4 p-md-5 rounded-4 border-top-danger">
+                <div class="text-center mb-4">
+                    <div class="icon-circle bg-soft-danger mx-auto mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                            <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+                            <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+                        </svg>
+                    </div>
+                    <h1 class="h2 fw-bold text-danger">Eliminar Registro</h1>
+                    <p class="text-secondary small">Esta acción es irreversible. Por favor confirme.</p>
+                </div>
+
+                <div class="product-preview bg-light rounded-4 p-4 mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="text-secondary small">Nombre del activo</span>
+                        <span class="fw-bold">@Model.Name</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-secondary small">Valor de mercado</span>
+                        <span class="fw-bold text-primary">@Model.Price.ToString("C")</span>
+                    </div>
+                </div>
+
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-danger btn-lg rounded-pill fw-bold shadow-sm py-3 transition-all">
+                            Confirmar Eliminación
+                        </button>
+                        <a asp-action="Index" class="btn btn-link py-2 text-secondary text-decoration-none small">
+                            Cancelar y volver
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-soft-danger { 
+        background-color: #fef2f2; 
+        width: 64px; 
+        height: 64px; 
+        border-radius: 1.25rem; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        color: #dc2626;
+    }
+    .border-top-danger { border-top: 5px solid #dc2626 !important; }
+    .product-preview { border-left: 4px solid #e5e7eb; }
+    .transition-all { transition: all 0.3s ease; }
+    .btn-danger:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.3); }
+</style>

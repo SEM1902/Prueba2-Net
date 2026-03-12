@@ -1,0 +1,79 @@
+@model PruebaNet.Models.Product
+
+@{
+    ViewData["Title"] = "Editar Producto";
+}
+
+<div class="container mt-5 animate-in">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card border-0 shadow-lg glass p-4 p-md-5 rounded-4">
+                <div class="text-center mb-4">
+                    <div class="icon-circle bg-soft-primary mx-auto mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                        </svg>
+                    </div>
+                    <h1 class="h2 fw-bold text-gradient">Refinar Producto</h1>
+                    <p class="text-secondary small">Actualiza la información técnica del activo</p>
+                </div>
+
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
+                    <input type="hidden" asp-for="Id" />
+                    
+                    <div class="form-floating mb-3">
+                        <input asp-for="Name" class="form-control border-0 bg-light-subtle rounded-3" placeholder="Nombre" />
+                        <label asp-for="Name" class="text-secondary">Nombre del Producto</label>
+                        <span asp-validation-for="Name" class="text-danger small"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <textarea asp-for="Description" class="form-control border-0 bg-light-subtle rounded-3" placeholder="Descripción" style="height: 120px"></textarea>
+                        <label asp-for="Description" class="text-secondary">Especificaciones</label>
+                        <span asp-validation-for="Description" class="text-danger small"></span>
+                    </div>
+
+                    <div class="form-floating mb-4">
+                        <input asp-for="Price" class="form-control border-0 bg-light-subtle rounded-3" placeholder="Precio" />
+                        <label asp-for="Price" class="text-secondary">Precio Unitario ($)</label>
+                        <span asp-validation-for="Price" class="text-danger small"></span>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg rounded-pill fw-bold shadow-sm py-3 transition-all">
+                            Guardar Cambios
+                        </button>
+                        <a asp-action="Index" class="btn btn-link py-2 text-secondary text-decoration-none small">
+                            Cancelar y volver
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-soft-primary { 
+        background-color: #eef2ff; 
+        width: 64px; 
+        height: 64px; 
+        border-radius: 1.25rem; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        color: var(--primary);
+    }
+    .form-control:focus {
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        background-color: #fff !important;
+    }
+    .transition-all { transition: all 0.3s ease; }
+    .btn-primary:hover { transform: translateY(-2px); }
+</style>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
